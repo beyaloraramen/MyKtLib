@@ -4,9 +4,6 @@ plugins {
     `maven-publish`
 }
 
-group = "com.github.beyaloraramen"
-version = "1.0.0"
-
 repositories {
     mavenCentral()
 }
@@ -26,7 +23,7 @@ testing {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 
     withSourcesJar()
@@ -37,9 +34,6 @@ publishing {
     publications {
         create<MavenPublication>("release") {
             from(components["java"])
-            groupId = project.group.toString()
-            artifactId = project.name
-            version = project.version.toString()
         }
     }
 }
